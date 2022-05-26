@@ -30,38 +30,43 @@ function Viewer({ open, handleClose, data }: ViewerProps): ReactElement {
         p: 4,
     };
 
+    const renderModal = (): ReactElement => {
+
+        return (data ?
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            {data.title}
+                        </Typography>
+                        <IconButton onClick={handleClose}>
+                            <Close />
+                        </IconButton>
+                    </div>
+                    <ImageListItem key={data.image}>
+                        <img
+                            src={`${data.image}?w=12&h=12&fit=crop&auto=format`}
+                            srcSet={`${data.image}?w=12&h=12&fit=crop&auto=format&dpr=1 1x`}
+                            loading="lazy"
+                            alt=""
+                        />
+                    </ImageListItem>
+                    <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+                        {data.content}
+                    </Typography>
+                </Box>
+            </Modal>
+            : <></>);
+    };
+
     return (
         <>
-            {data ?
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                {data.title}
-                            </Typography>
-                            <IconButton onClick={handleClose}>
-                                <Close />
-                            </IconButton>
-                        </div>
-                        <ImageListItem key={data.image}>
-                            <img
-                                src={`${data.image}?w=12&h=12&fit=crop&auto=format`}
-                                srcSet={`${data.image}?w=12&h=12&fit=crop&auto=format&dpr=1 1x`}
-                                loading="lazy"
-                                alt=""
-                            />
-                        </ImageListItem>
-                        <Typography id="modal-modal-description" sx={{ mt: 1 }}>
-                            {data.content}
-                        </Typography>
-                    </Box>
-                </Modal>
-                : <></>}
+            {renderModal()}
             <a-scene>
                 <a-assets>
                     <img id="hsIcon" src="./XR-Hotspot.png" alt=""></img>

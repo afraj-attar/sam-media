@@ -4,7 +4,7 @@ import { Viewer as ViewerComponent } from "../components/viewer";
 import { fetchPartData } from "../DataManager";
 
 
-export function Viewer(props: any): ReactElement {
+export function Viewer(): ReactElement {
 
     const [open, setOpen] = React.useState(false);
     const [data, setData] = React.useState<any | undefined>(undefined);
@@ -19,9 +19,9 @@ export function Viewer(props: any): ReactElement {
                 init: function () {
 
                     this.el.addEventListener("mousedown", function (evt) {
-                        console.log("clicked", evt.srcElement.id);
+                        console.log("clicked", evt.target?.id);
                         handleOpen();
-                        setData(fetchPartData(evt.srcElement.id));
+                        setData(fetchPartData(evt.target?.id));
                     });
                 }
             });
