@@ -1,55 +1,29 @@
-import React, { ReactElement, useEffect } from "react";
+import { ReactElement } from "react";
 import "aframe";
-import { Box, ImageListItem, Modal, Typography } from "@mui/material";
+import { Box, IconButton, ImageListItem, Modal, Typography } from "@mui/material";
+import { Close } from "@mui/icons-material";
 
-interface ViewerProps {
-    id?: string;
+export interface PartData {
+
+    title: string;
+    content: string;
+    image: string;
 }
 
-function Viewer(props: ViewerProps): ReactElement {
+interface ViewerProps {
+    open: boolean;
+    handleClose: () => void;
+    data: PartData | undefined;
+}
 
-    const [open, setOpen] = React.useState(false);
-    const [data, setData] = React.useState<any | undefined>(undefined);
-    const handleOpen = (): void => setOpen(true);
-    const handleClose = (): void => setOpen(false);
-
-    useEffect(() => {
-
-        if (!AFRAME.components["cursor-listener"]) {
-            AFRAME.registerComponent("cursor-listener", {
-
-                init: function () {
-
-                    this.el.addEventListener("mousedown", function (evt) {
-                        console.log("clicked", evt.srcElement.id);
-                        handleOpen();
-                        setData(dataArray[0]);
-                    });
-                }
-            });
-
-        }
-
-
-    }, []);
-
-
-
-    const dataArray = [{
-        title: "Bone",
-        content: `Bones are rigid organs that form part of the endoskeleton of vertebrates. 
-        They function to move, support, and protect the various organs of the body, produce red and white blood cells and store minerals. 
-        Bone tissue is a type of dense connective tissue. 
-        Bones have a variety of shapes with a complex internal and external structure they are also lightweight, yet strong and hard.`,
-        image: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Left_femur_of_extinct_elephant%2C_Alaska%2C_Ice_Age_Wellcome_L0057714.jpg"
-    }];
+function Viewer({ open, handleClose, data }: ViewerProps): ReactElement {
 
     const style = {
         position: 'absolute' as 'absolute',
         top: '40%',
         left: '70%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: 300,
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
@@ -66,18 +40,23 @@ function Viewer(props: ViewerProps): ReactElement {
                     aria-describedby="modal-modal-description"
                 >
                     <Box sx={style}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            {data.title}
-                        </Typography>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                {data.title}
+                            </Typography>
+                            <IconButton onClick={handleClose}>
+                                <Close />
+                            </IconButton>
+                        </div>
                         <ImageListItem key={data.image}>
                             <img
-                                src={`${data.image}?w=32&h=32&fit=crop&auto=format`}
-                                srcSet={`${data.image}?w=32&h=32&fit=crop&auto=format&dpr=2 1x`}
+                                src={`${data.image}?w=12&h=12&fit=crop&auto=format`}
+                                srcSet={`${data.image}?w=12&h=12&fit=crop&auto=format&dpr=1 1x`}
                                 loading="lazy"
                                 alt=""
                             />
                         </ImageListItem>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <Typography id="modal-modal-description" sx={{ mt: 1 }}>
                             {data.content}
                         </Typography>
                     </Box>
