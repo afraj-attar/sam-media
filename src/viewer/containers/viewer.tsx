@@ -18,9 +18,10 @@ export function Viewer(): ReactElement {
                 init: function () {
 
                     this.el.addEventListener("mousedown", function (evt) {
-                        console.log("clicked", evt.target?.id);
+                        const { id } = evt.target as any;
+                        console.log("clicked", id);
                         handleOpen();
-                        setData(fetchPartData(evt.target?.id));
+                        setData(fetchPartData(id));
                     });
                 }
             });
