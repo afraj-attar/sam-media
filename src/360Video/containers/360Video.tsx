@@ -12,11 +12,12 @@ export function Three60Video(): ReactElement {
     useEffect(() => {
         registerComponents();
 
-        if (!AFRAME.components["cursor-listener"])
-            AFRAME.registerComponent("cursor-listener", {
+        if (!AFRAME.components["cursor-listener2"])
+            AFRAME.registerComponent("cursor-listener2", {
                 init: function () {
                     this.el.addEventListener("click", function (evt) {
                         handleOpen();
+                        console.log("clicked 360");
                     });
 
                     this.el.addEventListener("mouseenter", function (evt) {

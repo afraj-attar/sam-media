@@ -43,7 +43,7 @@ export function Three60Video({ open, handleClose }: Three60VideoProps): ReactEle
         <a-scene>
             <a-entity
                 cursor="fuse: true; rayOrigin: mouse"
-                raycaster="objects: .cursor-listener"
+                raycaster="objects: .cursor-listener2"
             ></a-entity>
             <a-assets>
                 <video id="videoEntity" src="tower_bridge.mp4" autoPlay preload="auto" />
@@ -52,7 +52,7 @@ export function Three60Video({ open, handleClose }: Three60VideoProps): ReactEle
                 cursor="fuse: true; fuseTimeout: 500" width="0.5" height="0.5" ></a-image>
             <a-camera reverse-mouse-drag="true" />
             <a-videosphere src="#videoEntity" rotation="0 -90 0" play-on-click />
-            <a-entity id="info" class="cursor-listener" cursor-listener gltf-model="url(./info.gltf)"
+            <a-entity id="info" class="cursor-listener2" cursor-listener2 gltf-model="url(./info.gltf)"
                 scale="0.06 0.06 0.06" position="0.1 1.3 -1" ></a-entity>
         </a-scene>
     </>;

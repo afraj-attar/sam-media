@@ -15,12 +15,12 @@ function ToolBar(): ReactElement {
             alignItems="flex-end"
             spacing={1}>
             <Grid item>
-                <IconButton component={Link} to="/sam-media/360video" size="large" style={{ background: "#FFF" }} >
+                <IconButton component={Link} to="/360video" size="large" style={{ background: "#FFF" }} >
                     <VideoCameraFrontIcon color="secondary" />
                 </IconButton>
             </Grid>
             <Grid item>
-                <IconButton component={Link} to="/sam-media" size="large" style={{ background: "#FFF" }} >
+                <IconButton component={Link} to="/" size="large" style={{ background: "#FFF" }} >
                     <AccessibilityNewIcon color="secondary" />
                 </IconButton>
             </Grid>
