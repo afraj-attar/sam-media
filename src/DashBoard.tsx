@@ -1,8 +1,9 @@
 import { ReactElement, useCallback, useEffect, useRef } from "react";
 import "aframe";
 import { useNavigate } from 'react-router-dom';
+import { VRNavBar } from "./VRNavBar";
 
-export function DashBoard({ history }: any): ReactElement {
+export function DashBoard(): ReactElement {
 
     const vrMode = useRef(false);
     const navigate = useNavigate();
@@ -15,22 +16,17 @@ export function DashBoard({ history }: any): ReactElement {
                 .querySelector("a-camera")
                 .removeChild(document.querySelector("a-camera").childNodes[0]);
 
-            document.querySelector('video-icon').setAttribute('opacity', 0);
-            document.querySelector('skeleton-icon').setAttribute('opacity', 0);
-            document.querySelector('home-icon').setAttribute('opacity', 0);
-
         });
         document.querySelector("a-scene").addEventListener("enter-vr", function () {
             vrMode.current = true;
             // Add cursor to pick entity at runtime
             var el = document.createElement("a-cursor");
             document.querySelector("a-camera").appendChild(el);
-
-            document.querySelector('#video-icon').setAttribute('opacity', 1);
-            document.querySelector('#skeleton-icon').setAttribute('opacity', 1);
-            document.querySelector('#home-icon').setAttribute('opacity', 1);
-
         });
+
+        if (window.location.href.includes('vrmode')) {
+            document.querySelector('.a-enter-vr-button').click();
+        }
     };
 
     const resgister = (): void => {
@@ -47,24 +43,6 @@ export function DashBoard({ history }: any): ReactElement {
                         }
 
                         console.log(id);
-
-                    });
-
-                    this.el.addEventListener("mouseenter", function (evt) {
-
-                        if (!vrMode) {
-                            return;
-                        }
-                        const { id } = evt.target as any;
-                        let url = "/";
-                        switch (id) {
-                            case "video-icon":
-                                url = '360video?vrmode=true';
-                                break;
-                            case "skeleton-icon":
-                                url = 'skeleton?vrmode=true';
-                        }
-                        handleClick(url);
 
                     });
                 }
@@ -114,38 +92,7 @@ export function DashBoard({ history }: any): ReactElement {
                 position="-2 1.5 -3.5"
             ></a-image>
 
-            {/* Nav Icons */}
-            <a-image
-                class="cursor-home"
-                cursor-home
-                src="url(./ar-images/video-icon.png)"
-                id="video-icon"
-                height="0.4"
-                width="0.4"
-                position="-0.5 -1 -3.5"
-                opacity="0"
-            ></a-image>
-
-            <a-image
-                class="cursor-home"
-                cursor-home
-                src="url(./ar-images/home-icon.png)"
-                id="home-icon"
-                height="0.4"
-                width="0.4"
-                position="0 -1 -3.5"
-                opacity="0"
-            ></a-image>
-            <a-image
-                class="cursor-home"
-                cursor-home
-                src="url(./ar-images/skeleton-icon.png)"
-                id="skeleton-icon"
-                height="0.4"
-                width="0.4"
-                position="0.5 -1 -3.5"
-                opacity="0"
-            ></a-image>
+            <VRNavBar></VRNavBar>
 
         </a-scene>
     </>;

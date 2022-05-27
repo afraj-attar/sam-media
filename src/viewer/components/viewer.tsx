@@ -3,6 +3,7 @@ import "aframe";
 import { Box, Grid, IconButton, ImageListItem, Modal, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { isMobile } from "is-mobile";
+import { VRNavBar } from "../../VRNavBar";
 
 
 export interface PartData {
@@ -106,6 +107,7 @@ function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement 
                 <a-entity id="Four" class="cursor-listener" cursor-listener gltf-model="url(./4.gltf)"
                     scale="0.06 0.06 0.06" position="0.5 1.3 -1.95" ></a-entity>
 
+                <VRNavBar></VRNavBar>
             </a-scene>
         </>
     );

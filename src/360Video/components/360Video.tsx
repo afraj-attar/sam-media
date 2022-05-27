@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import "aframe";
 import { Box, Modal, Typography } from "@mui/material";
+import { VRNavBar } from "../../VRNavBar";
 
 export interface Three60VideoProps {
     open: boolean;
@@ -54,6 +55,9 @@ export function Three60Video({ open, handleClose }: Three60VideoProps): ReactEle
             <a-videosphere src="#videoEntity" rotation="0 -90 0" play-on-click />
             <a-entity id="info" class="cursor-listener2" cursor-listener2 gltf-model="url(./info.gltf)"
                 scale="0.06 0.06 0.06" position="0.1 1.3 -1" ></a-entity>
+
+            <VRNavBar></VRNavBar>
+
         </a-scene>
     </>;
 
