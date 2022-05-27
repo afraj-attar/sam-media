@@ -73,8 +73,7 @@ function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement 
                     <img id="hsIcon" src="./XR-Hotspot.png" alt=""></img>
                 </a-assets>
 
-                <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-                <a-sky color="#ECECEC"></a-sky>
+                <a-sky src="url(scene1.jpg)"></a-sky>
                 <a-entity
                     cursor="fuse: true; rayOrigin: mouse"
                     raycaster="objects: .cursor-listener"
