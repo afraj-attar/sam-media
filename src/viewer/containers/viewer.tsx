@@ -24,8 +24,7 @@ export function Viewer(): ReactElement {
                         console.log("clicked", id);
                         handleOpen();
                         const partData = fetchPartData(id);
-                        if (partData)
-                            setData(partData);
+                        setData(partData);
                     });
 
                     this.el.addEventListener("mouseenter", function (evt) {
