@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect } from "react";
-import { ToolBar } from "../../ToolBar";
 import { Viewer as ViewerComponent } from "../components/viewer";
 import { fetchPartData } from "./DataManager";
 
@@ -39,7 +38,6 @@ export function Viewer(): ReactElement {
 
     return <>
         <ViewerComponent open={open} handleClose={handleClose} data={data} />
-        <ToolBar handleClick={() => { }} />
     </>;
 
 }
