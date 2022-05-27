@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useRef } from "react";
+import { PopUp } from "../components/PopUp";
 import { Viewer as ViewerComponent } from "../components/viewer";
 import { fetchPartData } from "./DataManager";
 
@@ -53,9 +54,10 @@ export function Viewer(): ReactElement {
                     this.el.addEventListener("mousedown", function (evt) {
                         const { id } = evt.target as any;
                         console.log("clicked", id);
-                        handleOpen();
+
                         const partData = fetchPartData(id);
                         setData(partData);
+                        handleOpen();
                     });
 
                     this.el.addEventListener("mouseenter", function (evt) {
@@ -127,7 +129,8 @@ export function Viewer(): ReactElement {
     }, []);
 
     return <>
-        <ViewerComponent open={open} handleClose={handleClose} data={data} vrMode={vrMode.current} />
+        <ViewerComponent />
+        <PopUp open={open} handleClose={handleClose} data={data}></PopUp>
     </>;
 
 }
