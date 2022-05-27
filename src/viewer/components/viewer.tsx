@@ -81,6 +81,8 @@ function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement 
                 <a-camera></a-camera>
                 <a-image id="vrImage" opacity="0" src="" position="0.8 2.5 -1.8"
                     cursor="fuse: true; fuseTimeout: 500" ></a-image>
+                <a-image id="closeImg" opacity="0" src="url(ar-images/close.png)" width="0.1" height="0.1" position="1.18 2.9 -1.79"
+                    cursor="fuse: true; fuseTimeout: 500" cursor-listener ></a-image>
                 <a-entity gltf-model="url(./skeleton/scene.gltf)" scale="0.06 0.06 0.06" position="0 0.5 -2" ></a-entity>
                 <a-entity id="One" class="cursor-listener" cursor-listener gltf-model="url(./1.gltf)"
                     scale="0.06 0.06 0.06" position="0 0.5 -1.95" ></a-entity>

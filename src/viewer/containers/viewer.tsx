@@ -36,10 +36,12 @@ export function Viewer(): ReactElement {
 
                             document.querySelector("#vrImage").setAttribute('src', `url(ar-images/${id}.png)`);
                             document.querySelector("#vrImage").setAttribute("opacity", 1);
+                            document.querySelector("#closeImg").setAttribute("opacity", 1);
                         }
-                        else {
+                        else if (id.includes("closeImg")) {
                             document.querySelector("#vrImage").setAttribute('src', "");
                             document.querySelector("#vrImage").setAttribute("opacity", 0);
+                            document.querySelector("#closeImg").setAttribute("opacity", 0);
                         }
                     });
 
