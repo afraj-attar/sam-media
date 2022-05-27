@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useRef } from "react";
 import "aframe";
 import { Box, IconButton, ImageListItem, Modal, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
@@ -14,9 +14,10 @@ interface ViewerProps {
     open: boolean;
     handleClose: () => void;
     data: PartData | undefined;
+    vrMode: boolean;
 }
 
-function Viewer({ open, handleClose, data }: ViewerProps): ReactElement {
+function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement {
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -78,12 +79,9 @@ function Viewer({ open, handleClose, data }: ViewerProps): ReactElement {
                     cursor="fuse: true; rayOrigin: mouse"
                     raycaster="objects: .cursor-listener"
                 ></a-entity>
-                <a-entity cursor="fuse: true; fuseTimeout: 500"
-                    position="0 1.65 -1"
-                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                    material="color: black; shader: flat">
-                </a-entity>
-
+                <a-camera></a-camera>
+                <a-image id="vrImage" opacity="0" src="" position="0.8 2.5 -1.8"
+                    cursor="fuse: true; fuseTimeout: 500" ></a-image>
                 <a-entity gltf-model="url(./skeleton/scene.gltf)" scale="0.06 0.06 0.06" position="0 0.5 -2" ></a-entity>
                 <a-entity id="One" class="cursor-listener" cursor-listener gltf-model="url(./1.gltf)"
                     scale="0.06 0.06 0.06" position="0 0.5 -1.95" ></a-entity>
