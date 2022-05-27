@@ -1,17 +1,17 @@
 {
-  "name": "@afraj-attar/sam-media-final",
+  "name": "@afraj-attar/sam-media",
   "private": false,
   "version": "0.0.1",
   "description": "A template for writing code in three.js and react in typescript",
   "author": "Afraj Attar",
-  "homepage": "https://afraj-attar.github.io/sam-media-final/",
+  "homepage": "https://afraj-attar.github.io/sam-media/",
   "license": "ISC",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/afraj-attar"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/afraj-attar/sam-media-final.git"
+    "url": "git://github.com/afraj-attar/sam-media.git"
   },
   "scripts": {
     "start": "vite",

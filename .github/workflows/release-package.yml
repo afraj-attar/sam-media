@@ -1,4 +1,4 @@
-name: sam-media-final
+name: sam-media
 
 on:
   release:
