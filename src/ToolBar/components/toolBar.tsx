@@ -3,7 +3,8 @@ import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
-
+import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 
 function ToolBar(): ReactElement {
 
@@ -11,10 +12,18 @@ function ToolBar(): ReactElement {
         <Grid container
             direction="row"
             justifyContent="center"
-            alignItems="flex-end">
-            <IconButton component={Link} to="/sam-media" size="large" style={{ background: "#FFF" }} >
-                <Home color="secondary" />
-            </IconButton>
+            alignItems="flex-end"
+            spacing={1}>
+            <Grid item>
+                <IconButton component={Link} to="/sam-media/360video" size="large" style={{ background: "#FFF" }} >
+                    <VideoCameraFrontIcon color="secondary" />
+                </IconButton>
+            </Grid>
+            <Grid item>
+                <IconButton component={Link} to="/sam-media" size="large" style={{ background: "#FFF" }} >
+                    <AccessibilityNewIcon color="secondary" />
+                </IconButton>
+            </Grid>
         </Grid>
     </>;
 
