@@ -12,4 +12,4 @@ npm run start
 [Live Demo](https://afraj-attar.github.io/sam-media/)
 
 ## Demo
-![oBdaL4mbYa](https://user-images.githubusercontent.com/84125955/167296703-737910c1-b81f-4fe8-81b7-4500f21f9a7c.gif)
+![image](https://user-images.githubusercontent.com/84125955/170767794-72825c8e-0c04-41ae-9bb7-ac6ad1a9db1f.png)
