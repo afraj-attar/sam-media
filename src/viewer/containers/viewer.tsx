@@ -66,6 +66,11 @@ export function Viewer(): ReactElement {
             var el = document.createElement("a-cursor");
             document.querySelector("a-camera").appendChild(el);
         });
+
+        if (window.location.href.includes('vrmode')) {
+            document.querySelector('.a-enter-vr-button').click();
+        }
+
     };
 
     useEffect(() => {

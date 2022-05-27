@@ -40,7 +40,7 @@ export function Three60Video({ open, handleClose }: Three60VideoProps): ReactEle
         </Modal>
         : <></>);
 
-        <a-scene>
+        <a-scene vr-mode-ui="enabled: true">
             <a-entity
                 cursor="fuse: true; rayOrigin: mouse"
                 raycaster="objects: .cursor-listener2"

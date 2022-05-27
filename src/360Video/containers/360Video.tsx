@@ -9,6 +9,7 @@ export function Three60Video(): ReactElement {
     const handleClose = (): void => setOpen(false);
     const vrMode = useRef<boolean>(false);
 
+
     useEffect(() => {
         registerComponents();
 
@@ -60,6 +61,11 @@ export function Three60Video(): ReactElement {
             var el = document.createElement("a-cursor");
             document.querySelector("a-camera").appendChild(el);
         });
+
+        if (window.location.href.includes('vrmode')) {
+            document.querySelector('.a-enter-vr-button').click();
+        }
+
     };
 
 
