@@ -25,7 +25,7 @@ function ToolBar(): ReactElement {
                 </IconButton>
             </Grid>
             <Grid item>
-                <IconButton component={Link} to="/" size="large" style={{ background: "#FFF" }} >
+                <IconButton component={Link} to="/skeleton" size="large" style={{ background: "#FFF" }} >
                     <AccessibilityNewIcon color="secondary" />
                 </IconButton>
             </Grid>
