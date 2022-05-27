@@ -21,6 +21,11 @@ function ToolBar(): ReactElement {
             </Grid>
             <Grid item>
                 <IconButton component={Link} to="/" size="large" style={{ background: "#FFF" }} >
+                    <Home color="secondary" />
+                </IconButton>
+            </Grid>
+            <Grid item>
+                <IconButton component={Link} to="/" size="large" style={{ background: "#FFF" }} >
                     <AccessibilityNewIcon color="secondary" />
                 </IconButton>
             </Grid>

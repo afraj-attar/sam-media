@@ -5,13 +5,15 @@ import "./index.css";
 import { Three60Video } from './360Video';
 import { ToolBar } from './ToolBar';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { DashBoard } from './DashBoard';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <BrowserRouter basename='sam-media'>
         <Routes>
-          <Route path='/' element={<Viewer />} ></Route>
+          <Route path='/' element={<DashBoard />} ></Route>
+          <Route path='/skeleton' element={<Viewer />} ></Route>
           <Route path='/360video' element={<Three60Video />} ></Route>
         </Routes>
         <ToolBar />

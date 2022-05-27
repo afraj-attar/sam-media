@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
 import "aframe";
-import { Box, IconButton, ImageListItem, Modal, Typography } from "@mui/material";
+import { Box, Grid, IconButton, ImageListItem, Modal, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { isMobile } from "is-mobile";
+
 
 export interface PartData {
 
@@ -19,12 +21,21 @@ interface ViewerProps {
 
 function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement {
 
-    const style = {
+    const style = isMobile() ? {
+        position: 'absolute' as 'absolute',
+        top: '0',
+        left: '0',
+        width: "90%",
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    } : {
         position: 'absolute' as 'absolute',
         top: '40%',
         left: '70%',
         transform: 'translate(-50%, -50%)',
-        width: 300,
+        width: "15%",
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
@@ -34,6 +45,7 @@ function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement 
     const renderModal = (): ReactElement => {
 
         return (data ?
+
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -62,6 +74,7 @@ function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement 
                     </Typography>
                 </Box>
             </Modal>
+
             : <></>);
     };
 
