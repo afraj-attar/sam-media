@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useRef } from "react";
+import { ReactElement } from "react";
 import "aframe";
 import { Box, IconButton, ImageListItem, Modal, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
