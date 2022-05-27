@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useRef } from "react";
 import { Viewer as ViewerComponent } from "../components/viewer";
 import { fetchPartData } from "./DataManager";
 
+declare var THREE: any;     // To avoid multiple imports
 
 export function Viewer(): ReactElement {
 
@@ -11,6 +12,36 @@ export function Viewer(): ReactElement {
     const handleClose = (): void => setOpen(false);
 
     const vrMode = useRef<boolean>(false);
+
+    const reduceTextureSize = (three3D: THREE.Object3D): void => {
+
+        three3D.traverse((node) => {
+
+            // @ts-ignore
+            const material = node.material;
+
+            if (material && material.map) {
+
+                const texture = (material.map as THREE.Texture);
+
+                const canvas = document.createElement('canvas') as any as HTMLCanvasElement;
+                canvas.width = texture.image.width;
+                canvas.height = texture.image.height;
+                const context = canvas.getContext('2d')!;
+
+                context.drawImage(texture.image, 0, 0);
+                context.scale(0.5, 0.5);
+                const canvasTexture = new THREE.CanvasTexture(context.canvas);
+                canvasTexture.flipY = false;
+
+                material.map = canvasTexture;
+                canvasTexture.needsUpdate = true;
+
+            }
+
+        });
+
+    };
 
     const registerCursorListener = (): void => {
 
@@ -51,6 +82,18 @@ export function Viewer(): ReactElement {
             });
 
         };
+
+        if (!AFRAME.components['treeman'])
+            AFRAME.registerComponent('treeman', {
+                init: function () {
+                    const el = this.el;
+                    el.addEventListener("model-loaded", e => {
+                        const tree3D = el.getObject3D('mesh');
+                        if (!tree3D) { return; }
+                        reduceTextureSize(tree3D);
+                    });
+                }
+            });
     };
 
     const onSceneLoad = (): void => {

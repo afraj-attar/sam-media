@@ -97,7 +97,7 @@ function Viewer({ open, handleClose, data, vrMode }: ViewerProps): ReactElement 
                     cursor="fuse: true; fuseTimeout: 500" ></a-image>
                 <a-image id="closeImg" opacity="0" src="url(ar-images/close.png)" width="0.1" height="0.1" position="1.18 2.9 -1.79"
                     cursor-listener ></a-image>
-                <a-entity gltf-model="url(./skeleton/scene.gltf)" scale="0.06 0.06 0.06" position="0 0.5 -2" ></a-entity>
+                <a-entity treeman gltf-model="url(./skeleton/scene.gltf)" scale="0.06 0.06 0.06" position="0 0.5 -2" ></a-entity>
                 <a-entity id="One" class="cursor-listener" cursor-listener gltf-model="url(./1.gltf)"
                     scale="0.06 0.06 0.06" position="0 0.5 -1.95" ></a-entity>
                 <a-entity id="Two" class="cursor-listener" cursor-listener gltf-model="url(./2.gltf)"
